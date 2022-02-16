@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelFormLayout id="pfl1">
+    <af:inputText value="#{bindings.Id.inputValue}" label="#{bindings.Id.hints.label}"
+                  required="#{bindings.Id.hints.mandatory}" columns="#{bindings.Id.hints.displayWidth}"
+                  maximumLength="#{bindings.Id.hints.precision}" shortDesc="#{bindings.Id.hints.tooltip}" id="it1">
+      <f:validator binding="#{bindings.Id.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.Id.format}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.Nombre.inputValue}" label="#{bindings.Nombre.hints.label}"
+                  required="#{bindings.Nombre.hints.mandatory}" columns="#{bindings.Nombre.hints.displayWidth}"
+                  maximumLength="#{bindings.Nombre.hints.precision}" shortDesc="#{bindings.Nombre.hints.tooltip}"
+                  id="it2">
+      <f:validator binding="#{bindings.Nombre.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.Duracion.inputValue}" label="#{bindings.Duracion.hints.label}"
+                  required="#{bindings.Duracion.hints.mandatory}" columns="#{bindings.Duracion.hints.displayWidth}"
+                  maximumLength="#{bindings.Duracion.hints.precision}" shortDesc="#{bindings.Duracion.hints.tooltip}"
+                  id="it3">
+      <f:validator binding="#{bindings.Duracion.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.Duracion.format}"/>
+    </af:inputText>
+    <f:facet name="footer">
+      <af:button text="Submit" id="b1"/>
+      <af:button actionListener="#{bindings.Commit.execute}" text="Aceptar" disabled="#{!bindings.Commit.enabled}"
+                 id="b2" action="volver"/>
+      <af:button actionListener="#{bindings.Rollback.execute}" text="Cancelar" disabled="#{!bindings.Rollback.enabled}"
+                 immediate="true" id="b3" action="volver">
+        <af:resetActionListener/>
+      </af:button>
+    </f:facet>
+  </af:panelFormLayout>
+</ui:composition>

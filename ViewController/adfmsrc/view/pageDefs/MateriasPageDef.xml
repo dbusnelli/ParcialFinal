@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="MateriasPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="MateriasView1" RangeSize="25" DataControl="AppModuleDataControl" id="MateriasView1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="MateriasView1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MateriasView1Iterator" id="Nombre">
+      <AttrNames>
+        <Item Value="Nombre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MateriasView1Iterator" id="Duracion">
+      <AttrNames>
+        <Item Value="Duracion"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="MateriasView1Iterator" StaticList="false" Uses="LOV_CursoId" id="CursoId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <action IterBinding="MateriasView1Iterator" id="First" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="MateriasView1Iterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="MateriasView1Iterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="MateriasView1Iterator" id="Last" RequiresUpdateModel="true" Action="last"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <action IterBinding="MateriasView1Iterator" id="CreateWithParams" RequiresUpdateModel="true"
+            Action="createWithParams"/>
+    <action IterBinding="MateriasView1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

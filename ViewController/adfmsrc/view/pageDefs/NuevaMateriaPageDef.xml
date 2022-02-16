@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="NuevaMateriaPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="MateriasView2" RangeSize="25" DataControl="AppModuleDataControl" id="MateriasView2Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="MateriasView2Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MateriasView2Iterator" id="Nombre">
+      <AttrNames>
+        <Item Value="Nombre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MateriasView2Iterator" id="Duracion">
+      <AttrNames>
+        <Item Value="Duracion"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="MateriasView2Iterator" StaticList="false" Uses="LOV_CursoId" id="CursoId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="MateriasPorCursoPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="MateriasView2" RangeSize="-1" DataControl="AppModuleDataControl" id="MateriasView2Iterator"/>
+    <iterator Binds="CursosView1" RangeSize="25" DataControl="AppModuleDataControl" id="CursosView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="MateriasView2Iterator" id="MateriasView2">
+      <nodeDefinition DefName="model.viewObjects.MateriasView" Name="MateriasView20">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="Nombre"/>
+          <Item Value="Duracion"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CursosView1Iterator" id="CursosView1">
+      <nodeDefinition DefName="model.viewObjects.CursosView" Name="CursosView10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="Nombre"/>
+          <Item Value="Duracion"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

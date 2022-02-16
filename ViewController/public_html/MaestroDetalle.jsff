@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelSplitter id="ps1" splitterPosition="414">
+    <f:facet name="first">
+      <af:panelSplitter id="ps2" orientation="vertical" splitterPosition="505">
+        <f:facet name="first">
+          <af:table value="#{bindings.CursosView1.collectionModel}" var="row" rows="#{bindings.CursosView1.rangeSize}"
+                    emptyText="#{bindings.CursosView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0" selectedRowKeys="#{bindings.CursosView1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.CursosView1.collectionModel.makeCurrent}" rowSelection="single"
+                    fetchSize="#{bindings.CursosView1.rangeSize}" id="t1" partialTriggers="::b1 ::b3 ::b5">
+            <af:column headerText="#{bindings.CursosView1.hints.Id.label}" id="c1">
+              <af:outputText value="#{row.Id}" shortDesc="#{bindings.CursosView1.hints.Id.tooltip}" id="ot1">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.CursosView1.hints.Id.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column headerText="#{bindings.CursosView1.hints.Nombre.label}" id="c2">
+              <af:outputText value="#{row.Nombre}" shortDesc="#{bindings.CursosView1.hints.Nombre.tooltip}" id="ot2"/>
+            </af:column>
+            <af:column headerText="#{bindings.CursosView1.hints.Duracion.label}" id="c3">
+              <af:outputText value="#{row.Duracion}" shortDesc="#{bindings.CursosView1.hints.Duracion.tooltip}"
+                             id="ot3">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.CursosView1.hints.Duracion.format}"/>
+              </af:outputText>
+            </af:column>
+          </af:table>
+        </f:facet>
+        <f:facet name="second">
+          <af:panelTabbed position="above" id="pt1">
+            <af:showDetailItem id="tab1" text="Operaciones Sobre Cursos">
+              <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+                Confirmacio
+                <af:panelTabbed position="above" id="pt3">
+                  <af:showDetailItem id="tab2" text="Realmente Desea Borrar">
+                    <af:panelFormLayout id="pfl1">
+                      <af:inputText value="#{bindings.Id1.inputValue}" label="#{bindings.Id1.hints.label}"
+                                    required="#{bindings.Id1.hints.mandatory}"
+                                    columns="#{bindings.Id1.hints.displayWidth}"
+                                    maximumLength="#{bindings.Id1.hints.precision}"
+                                    shortDesc="#{bindings.Id1.hints.tooltip}" id="it4">
+                        <f:validator binding="#{bindings.Id1.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.Id1.format}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.Nombre1.inputValue}" label="#{bindings.Nombre1.hints.label}"
+                                    required="#{bindings.Nombre1.hints.mandatory}"
+                                    columns="#{bindings.Nombre1.hints.displayWidth}"
+                                    maximumLength="#{bindings.Nombre1.hints.precision}"
+                                    shortDesc="#{bindings.Nombre1.hints.tooltip}" id="it5">
+                        <f:validator binding="#{bindings.Nombre1.validator}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.Duracion1.inputValue}" label="#{bindings.Duracion1.hints.label}"
+                                    required="#{bindings.Duracion1.hints.mandatory}"
+                                    columns="#{bindings.Duracion1.hints.displayWidth}"
+                                    maximumLength="#{bindings.Duracion1.hints.precision}"
+                                    shortDesc="#{bindings.Duracion1.hints.tooltip}" id="it6">
+                        <f:validator binding="#{bindings.Duracion1.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.Duracion1.format}"/>
+                      </af:inputText>
+                      <f:facet name="footer">
+                        <af:button actionListener="#{bindings.Delete.execute}" text="Confirmar"
+                                   disabled="#{!bindings.Delete.enabled}" id="b5"/>
+                        <af:button actionListener="#{bindings.Rollback.execute}" text="Cancelar"
+                                   disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b6">
+                          <af:resetActionListener/>
+                        </af:button>
+                      </f:facet>
+                    </af:panelFormLayout>
+                  </af:showDetailItem>
+                </af:panelTabbed>
+                n
+              </af:popup>
+              <af:button actionListener="#{bindings.Delete.execute}" text="Delete"
+                         disabled="#{!bindings.Delete.enabled}" id="b1">
+                <af:showPopupBehavior popupId="p1"/>
+              </af:button>
+              <af:button text="Modificar" id="b2" action="modificar"/>
+              <af:button actionListener="#{bindings.CreateWithParams3.execute}" text="Nuevo Curso"
+                         disabled="#{!bindings.CreateWithParams3.enabled}" id="b3" action="nuevo"/>
+              <af:button actionListener="#{bindings.Commit.execute}" text="Commit"
+                         disabled="#{!bindings.Commit.enabled}" id="b7"/>
+            </af:showDetailItem>
+          </af:panelTabbed>
+        </f:facet>
+      </af:panelSplitter>
+    </f:facet>
+    <f:facet name="second">
+      <af:panelSplitter id="ps3" orientation="vertical" splitterPosition="506">
+        <f:facet name="first">
+          <af:table value="#{bindings.MateriasView2.collectionModel}" var="row"
+                    rows="#{bindings.MateriasView2.rangeSize}"
+                    emptyText="#{bindings.MateriasView2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0" fetchSize="#{bindings.MateriasView2.rangeSize}" id="t2"
+                    partialTriggers="::b4">
+            <af:column headerText="#{bindings.MateriasView2.hints.Id.label}" id="c4">
+              <af:inputText value="#{row.bindings.Id.inputValue}" label="#{bindings.MateriasView2.hints.Id.label}"
+                            required="#{bindings.MateriasView2.hints.Id.mandatory}"
+                            columns="#{bindings.MateriasView2.hints.Id.displayWidth}"
+                            maximumLength="#{bindings.MateriasView2.hints.Id.precision}"
+                            shortDesc="#{bindings.MateriasView2.hints.Id.tooltip}" id="it1">
+                <f:validator binding="#{row.bindings.Id.validator}"/>
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.MateriasView2.hints.Id.format}"/>
+              </af:inputText>
+            </af:column>
+            <af:column headerText="#{bindings.MateriasView2.hints.Nombre.label}" id="c5">
+              <af:inputText value="#{row.bindings.Nombre.inputValue}"
+                            label="#{bindings.MateriasView2.hints.Nombre.label}"
+                            required="#{bindings.MateriasView2.hints.Nombre.mandatory}"
+                            columns="#{bindings.MateriasView2.hints.Nombre.displayWidth}"
+                            maximumLength="#{bindings.MateriasView2.hints.Nombre.precision}"
+                            shortDesc="#{bindings.MateriasView2.hints.Nombre.tooltip}" id="it2">
+                <f:validator binding="#{row.bindings.Nombre.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column headerText="#{bindings.MateriasView2.hints.Duracion.label}" id="c6">
+              <af:inputText value="#{row.bindings.Duracion.inputValue}"
+                            label="#{bindings.MateriasView2.hints.Duracion.label}"
+                            required="#{bindings.MateriasView2.hints.Duracion.mandatory}"
+                            columns="#{bindings.MateriasView2.hints.Duracion.displayWidth}"
+                            maximumLength="#{bindings.MateriasView2.hints.Duracion.precision}"
+                            shortDesc="#{bindings.MateriasView2.hints.Duracion.tooltip}" id="it3">
+                <f:validator binding="#{row.bindings.Duracion.validator}"/>
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.MateriasView2.hints.Duracion.format}"/>
+              </af:inputText>
+            </af:column>
+            <af:column headerText="#{bindings.MateriasView2.hints.CursoId.label}" id="c7">
+              <af:selectOneChoice value="#{row.bindings.CursoId.inputValue}" label="#{row.bindings.CursoId.label}"
+                                  required="#{bindings.MateriasView2.hints.CursoId.mandatory}"
+                                  shortDesc="#{bindings.MateriasView2.hints.CursoId.tooltip}" id="soc1">
+                <f:selectItems value="#{row.bindings.CursoId.items}" id="si1"/>
+                <f:validator binding="#{row.bindings.CursoId.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+          </af:table>
+        </f:facet>
+        <f:facet name="second">
+          <af:panelTabbed position="above" id="pt2">
+            <af:showDetailItem id="tab3" text="Operaciones Sobre Materias">
+              <af:button actionListener="#{bindings.CreateWithParams4.execute}" text="Nueva Materia"
+                         disabled="#{!bindings.CreateWithParams4.enabled}" id="b4" action="nuevaMateria"/>
+            </af:showDetailItem>
+          </af:panelTabbed>
+        </f:facet>
+      </af:panelSplitter>
+    </f:facet>
+  </af:panelSplitter>
+</ui:composition>

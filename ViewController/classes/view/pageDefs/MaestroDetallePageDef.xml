@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="MaestroDetallePageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.math.BigDecimal" Name="CreateWithParams_Id" IsQueriable="false"/>
+      <variable Type="java.lang.String" Name="CreateWithParams1_Nombre" IsQueriable="false"/>
+      <variable Type="java.math.BigDecimal" Name="CreateWithParams2_Duracion" IsQueriable="false"/>
+    </variableIterator>
+    <iterator Binds="CursosView1" RangeSize="25" DataControl="AppModuleDataControl" id="CursosView1Iterator"/>
+    <iterator Binds="MateriasView2" RangeSize="25" DataControl="AppModuleDataControl" id="MateriasView2Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="CursosView1Iterator" id="CursosView1">
+      <nodeDefinition DefName="model.viewObjects.CursosView" Name="CursosView10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="Nombre"/>
+          <Item Value="Duracion"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="MateriasView2Iterator" id="MateriasView2">
+      <nodeDefinition DefName="model.viewObjects.MateriasView" Name="MateriasView20">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="Nombre"/>
+          <Item Value="Duracion"/>
+          <Item Value="CursoId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="CursosView1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="CursosView1Iterator" id="CreateWithParams" RequiresUpdateModel="true"
+            Action="createWithParams">
+      <NamedData NDName="Id" NDValue="${bindings.CreateWithParams_Id}" NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="variables" id="Id">
+      <AttrNames>
+        <Item Value="CreateWithParams_Id"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="CursosView1Iterator" id="CreateWithParams1" RequiresUpdateModel="true"
+            Action="createWithParams">
+      <NamedData NDName="Nombre" NDValue="${bindings.CreateWithParams1_Nombre}" NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="variables" id="Nombre">
+      <AttrNames>
+        <Item Value="CreateWithParams1_Nombre"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="CursosView1Iterator" id="CreateWithParams2" RequiresUpdateModel="true"
+            Action="createWithParams">
+      <NamedData NDName="Duracion" NDValue="${bindings.CreateWithParams2_Duracion}" NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="variables" id="Duracion">
+      <AttrNames>
+        <Item Value="CreateWithParams2_Duracion"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="CursosView1Iterator" id="CreateWithParams3" RequiresUpdateModel="true"
+            Action="createWithParams"/>
+    <attributeValues IterBinding="CursosView1Iterator" id="Id1">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CursosView1Iterator" id="Nombre1">
+      <AttrNames>
+        <Item Value="Nombre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CursosView1Iterator" id="Duracion1">
+      <AttrNames>
+        <Item Value="Duracion"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <action IterBinding="MateriasView2Iterator" id="CreateWithParams4" RequiresUpdateModel="true"
+            Action="createWithParams"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+  </bindings>
+</pageDefinition>
